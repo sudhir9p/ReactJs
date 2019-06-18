@@ -1,0 +1,43 @@
+{
+  "name": "react-task1",
+  "version": "1.0.0",
+  "description": "Frontcamp Home Task",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --hot --inline",
+    "build": "npx webpack --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sudhir9p/ReactJs.git"
+  },
+  "keywords": [
+    "ReactJS"
+  ],
+  "author": "Sudhir Paturu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sudhir9p/ReactJs/issues"
+  },
+  "homepage": "https://github.com/sudhir9p/ReactJs#readme",
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "@babel/core": "7.4.3",
+    "@babel/plugin-proposal-class-properties": "7.4.0",
+    "@babel/plugin-syntax-dynamic-import": "7.2.0",
+    "@babel/polyfill": "7.4.3",
+    "@babel/preset-env": "7.4.3"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.0.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.34.0",
+    "webpack-cli": "^3.3.4",
+    "webpack-dev-server": "^3.7.2"
+  }
+}
