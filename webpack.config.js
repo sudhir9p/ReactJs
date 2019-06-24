@@ -6,7 +6,7 @@ module.exports = {
  devServer: {
     contentBase: './public',
     publicPath: '/dist',   
-    port: 3000,
+    port: 3011,
     hot: true,
     inline: true
   },

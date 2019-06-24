@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './app/app.js';
+import { App } from './core/app/component';
+import './index.css'
 
-ReactDOM.render(<App title="Netflix Roulette"></App>, document.getElementById('root'));
+ReactDOM.render(<App ></App>, document.getElementById('root'));
