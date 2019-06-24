@@ -43,7 +43,7 @@ body {
   font-weight: bold;
   line-height: 26px;
   }
-  .movie-card h1,h3,h2,.txtcolor {
+  .movie-card h1,h3,.txtcolor {
     background: #39c2d7;
     color: #ffffff;
     text-transform: capitalize;
@@ -269,4 +269,82 @@ body {
 
   .text-color {
     color: white;
+  }
+
+
+  .movie-details {
+    background-color: #524c4c;
+    margin-top: 30px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    height: 700px;
+  }
+
+  .image-container{text-align:center}
+
+  .details-image {
+    height:200px; 
+  }
+
+  .details-body {
+    border:none; background:white;
+  }
+
+  
+
+  .details-content {
+    margin-top:20px; 
+    padding-left:34px; 
+    background: none !important;
+    color: white;
+  }
+
+  .details-text {
+    background: none;
+    margin-top:20px; 
+    padding-left:15px; 
+    background: none;
+  }
+
+  .details-rating {
+    margin-left: 20px;
+    padding-top: 15px;
+    font-size: 20px;
+    display: inline-block;
+  }
+
+  .details-title {
+    font-size: 40px;
+  }
+
+
+  .details-year {
+    margin-top:15px;
+    font-size: 25px;
+  }
+
+  .details-year-text {
+    margin-top:25px;
+    font-size: 16px;
+  }
+
+  .details-mins {
+    margin-top:15px;
+    padding-left: 20px;
+    font-size: 25px;
+  }
+
+  .details-mins-text {
+    margin-top:25px;
+    padding-left: 2px;
+    font-size: 16px;
+  }
+
+  .details-movie-desc {
+    padding-top:50px;
+  }
+
+  .details-yearmin {
+    padding-top:15px;
   }
