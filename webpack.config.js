@@ -1,35 +1,39 @@
 var path = require("path");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 module.exports = {
- mode: 'development',
- devServer: {
-    contentBase: './public',
-    publicPath: '/dist',   
+  mode: 'development',
+  devServer: {
     port: 3011,
     hot: true,
     inline: true
   },
-  
-  entry: __dirname + '/src/index.js',  
+
+  entry: './src/index.js',
   module: {
-      rules: [   
+    rules: [
+      {
+        test: /\.js$/,
+        use: [
           {
-              test: /\.js$/,
-              use: [
-                {
-                  loader: 'babel-loader',
-                }
-              ]
-          },
-          {
-              test: /\.css$/, 
-              use: ["style-loader", "css-loader"]
-          }       
-      ]
+            loader: 'babel-loader',
+          }
+        ]
+      },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"]
+      }
+    ]
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
+    })
+  ],
   output: {
-    path: __dirname + "/dist",  
-    filename: 'bundle.js',  
+    path:  path.join(__dirname, '/dist'),
+    filename: 'bundle.js',
   },
 };

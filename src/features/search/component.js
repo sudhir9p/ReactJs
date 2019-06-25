@@ -18,13 +18,13 @@ export const SearchComponent = (searchContext) => {
             <div>
                 <div className="input-group">
                     <button onClick={(e) => searchContext.onSearchClick(e)} className="btn btn-success-cus fc-button">Search</button>
-                    <button onClick={(e) => searchContext.sortByGenres(e)} className="btn btn-success-cus fc-button">Genres</button>
-                    <button onClick={(e) => searchContext.sortByTitles(e)} className="btn btn-success-cus fc-button">Title</button>
+                    <button onClick={(e) => searchContext.onSortByGenres(e)} className="btn btn-success-cus fc-button">Genres</button>
+                    <button onClick={(e) => searchContext.onSortByTitles(e)} className="btn btn-success-cus fc-button">Title</button>
                 </div>
             </div>
             <div className="sortByDiv"><span className="bold text-color">Sort By:</span>
-                <button onClick={(e) => searchContext.sortByRelease(e)} className="btn btn-success-cus fc-button">Release Date</button>
-                <button onClick={(e) => searchContext.sortByRating(e)} className="btn btn-success-cus fc-button">Rating</button>
+                <button onClick={(e) => searchContext.onSortByReleaseDate(e)} className="btn btn-success-cus fc-button">Release Date</button>
+                <button onClick={(e) => searchContext.onSortByRating(e)} className="btn btn-success-cus fc-button">Rating</button>
             </div>
             <MoviesList movies={searchContext.data} history={searchContext.history}></MoviesList>
         </div>
