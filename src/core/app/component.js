@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
-import { Search } from '../../features/search/index';
-import { MoviesDetails } from '../../features/details/index';
+import Search from '../../features/search';
+import MoviesDetails from '../../features/details';
 import './app.css';
 
 

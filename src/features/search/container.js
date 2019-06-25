@@ -1,6 +1,7 @@
 import React from 'react';
 import { movies } from '../../../data/movies.json';
 import { SearchComponent } from './component';
+import { SearchUtils } from './utils';
 
 export class Search extends React.Component {
     constructor(props) {
@@ -12,44 +13,38 @@ export class Search extends React.Component {
         }
     }
 
-    onSearchClick(e) {
-        let movieList = [];
-        if (this.state.searchText !== '') {
-            movieList = this.moviesData.filter(item => {
-                return item.title.toLowerCase().includes(this.state.searchText.toLowerCase());
-            })
-        }
-        this.setState({ moviesData: movieList.length > 0 ? movieList : this.moviesData });
+    onSearchClick() {
+        this.setState((prevstate, props) => {
+            let movieList = [];
+            if (prevstate.searchText !== '') {
+                movieList = this.moviesData.filter(item => {
+                    return item.title.toLowerCase().includes(prevstate.searchText.toLowerCase());
+                });
+            }
+            return { moviesData: movieList.length > 0 ? movieList : this.moviesData };
+        });
+    }
+
+    onMovieClick = (movie) => {
+        this.props.history.push({
+            pathname: '/details',
+            data: {
+                movie
+            }
+        });
     }
 
     onSortByGenres() {
-        const currentList = this.state.moviesData
-        let sortResult = currentList.sort((a, b) => {
-            if (a.genres > b.genres) {
-                return 1
-            } else if (a.genres < b.genres) {
-                return -1
-            }
-        })
+        const sortResult = SearchUtils.sortMovies("genres", this.state.moviesData);
         this.setState({ moviesData: sortResult });
     }
 
     onSortByTitles() {
-        const currentList = this.state.moviesData
-        let sortResult = currentList.sort((a, b) => {
-            if (a.title > b.title) {
-                return 1
-            } else if (a.title < b.title) {
-                return -1
-            }
-        })
-        this.setState({
-            moviesData: sortResult
-        })
+        const sortResult = SearchUtils.sortMovies("title", this.state.moviesData);
+        this.setState({ moviesData: sortResult });
     }
 
     onSearchTextChange(e) {
-        debugger;
         let searchMovie = "";
         if (e.target.value !== '') {
             searchMovie = e.target.value;
@@ -78,12 +73,13 @@ export class Search extends React.Component {
     render() {
         return (
             <SearchComponent data={this.state.moviesData}
-                onSearchClick={(e) => this.onSearchClick(e)}
+                onSearchClick={() => this.onSearchClick()}
                 onSearchTextChange={(e) => this.onSearchTextChange(e)}
-                onSortByGenres={(e) => this.onSortByGenres(e)}
-                onSortByTitles={(e) => this.onSortByTitles(e)}
-                onSortByReleaseDate={(e) => this.onSortByReleaseDate(e)}
-                onSortByRating={(e) => this.onSortByRating(e)}
+                onSortByGenres={() => this.onSortByGenres()}
+                onSortByTitles={() => this.onSortByTitles()}
+                onSortByReleaseDate={() => this.onSortByReleaseDate()}
+                onSortByRating={() => this.onSortByRating()}
+                onMovieClick={(movie) => this.onMovieClick(movie)}
                 history={this.props.history} />
         );
 
