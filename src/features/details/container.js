@@ -1,6 +1,5 @@
 import React from 'react';
-
-import { withRouter } from 'react-router';
+import './details.css';
 
 export class MoviesDetails extends React.Component {
     constructor(props) {
