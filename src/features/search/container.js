@@ -27,10 +27,7 @@ export class Search extends React.Component {
 
     onMovieClick = (movie) => {
         this.props.history.push({
-            pathname: '/details',
-            data: {
-                movie
-            }
+            pathname: `/details/${movie.id}`
         });
     }
 

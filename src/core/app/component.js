@@ -9,7 +9,7 @@ export class App extends React.Component {
     render() {
         return (<Router>
             <Route exact path='/' component={Search} />
-            <Route path='/details' component={MoviesDetails} />
+            <Route path='/details/:id' component={MoviesDetails} />
         </Router>
         )
     }
