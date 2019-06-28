@@ -7,7 +7,6 @@ const initialState = {
 };
 
 const rootReducer = (state = initialState, action) => {
-    console.log(action);
     switch (action.type) {
         case ActionTypes.FETCH_MOVIES:
             return {

@@ -23,6 +23,7 @@ export class Search extends React.Component {
         })
     }
 
+
     getMovies() {
         return fetch(configuration.apiUrl).then(data => {
             debugger;
@@ -34,7 +35,7 @@ export class Search extends React.Component {
         debugger;
         let movieList = [];
         if (this.props.searchBy && this.props.searchBy !== "") {
-            movieList = this.moviesData.filter(item => {
+            movieList = this.props.movies.filter(item => {
                 return item.title.toLowerCase().includes(this.props.searchBy);
             });
         }
@@ -84,7 +85,6 @@ export class Search extends React.Component {
     }
 
     render() {
-        debugger;
         return (
             <SearchComponent data={this.props.displayData ? this.props.displayData : []}
                 onSearchClick={this.onSearchClick}

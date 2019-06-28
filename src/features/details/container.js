@@ -4,11 +4,9 @@ import { movies } from '../../../data/movies.json';
 
 export class MoviesDetails extends React.Component {
     constructor(props) {
-
         super(props);
         const movieId = this.props.match.params.id;
         this.movie = movies.filter(movie => movie.id == movieId)[0];
-        console.log(this.movie);
     }
 
     render() {
