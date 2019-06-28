@@ -1,7 +1,9 @@
-import React from 'react';
+import  React  from 'react';
 import { movies } from '../../../data/movies.json';
 import { SearchComponent } from './component';
 import { SearchUtils } from './utils';
+import { connect } from "react-redux";
+import { fetchMovies } from '../../core/state/actions';
 
 export class Search extends React.Component {
     constructor(props) {
@@ -11,6 +13,24 @@ export class Search extends React.Component {
             moviesData: this.moviesData,
             searchText: ""
         }
+    }
+
+    componentDidMount() {
+        // fetch('')
+        this.getMovies().then(data => {
+            this.props.dispatch(fetchMovies(data));
+        })
+    }
+
+    getMovies() {
+        return new Promise(resolve => {
+            // Resolve after a timeout so we can see the loading indicator
+            setTimeout(
+                () =>
+                    resolve(movies),
+                1000
+            );
+        });
     }
 
     onSearchClick() {
@@ -68,6 +88,7 @@ export class Search extends React.Component {
     }
 
     render() {
+        debugger;
         return (
             <SearchComponent data={this.state.moviesData}
                 onSearchClick={() => this.onSearchClick()}
@@ -84,4 +105,11 @@ export class Search extends React.Component {
 
 }
 
-export default Search;
+const mapStateToProps = state => ({
+    movies: state.movies
+});
+
+//export default Search;
+
+
+export default connect(mapStateToProps)(Search)
