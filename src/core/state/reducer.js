@@ -2,7 +2,8 @@ import * as ActionTypes from './actions';
 
 const initialState = {
     movies: [],
-    sortBy: "Title"
+    sortBy: "Title",
+    searchBy: ""
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -19,6 +20,11 @@ const rootReducer = (state = initialState, action) => {
                 sortByFilter: action.payload
             };
         case ActionTypes.SEARCH_MOVIES:
+            return {
+                ...state,
+                displayData: action.payload
+            };
+        case ActionTypes.MOVIE_SEARCH_TEXT:
             return {
                 ...state,
                 searchBy: action.payload

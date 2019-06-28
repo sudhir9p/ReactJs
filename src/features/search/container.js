@@ -1,48 +1,46 @@
-import  React  from 'react';
-import { movies } from '../../../data/movies.json';
+import React from 'react';
 import { SearchComponent } from './component';
 import { SearchUtils } from './utils';
 import { connect } from "react-redux";
-import { fetchMovies } from '../../core/state/actions';
+import { fetchMovies, searchMovies, movieSearchText } from '../../core/state/actions';
+import { configuration } from '../../../config/config.json'
 
 export class Search extends React.Component {
     constructor(props) {
         super(props);
-        this.moviesData = movies;
-        this.state = {
-            moviesData: this.moviesData,
-            searchText: ""
-        }
+        this.onSearchClick = this.onSearchClick.bind(this);
+        this.onSortByGenres = this.onSortByGenres.bind(this);
+        this.onSortByTitles = this.onSortByTitles.bind(this);
+        this.onSortByReleaseDate = this.onSortByReleaseDate.bind(this);
+        this.onMovieClick = this.onMovieClick.bind(this);
+        this.onSortByRating = this.onSortByRating.bind(this);
     }
 
     componentDidMount() {
-        // fetch('')
-        this.getMovies().then(data => {
-            this.props.dispatch(fetchMovies(data));
+        this.getMovies().then(res => {
+            this.props.dispatch(fetchMovies(res.data));
+            this.props.dispatch(searchMovies(res.data));
         })
     }
 
     getMovies() {
-        return new Promise(resolve => {
-            // Resolve after a timeout so we can see the loading indicator
-            setTimeout(
-                () =>
-                    resolve(movies),
-                1000
-            );
+        return fetch(configuration.apiUrl).then(data => {
+            debugger;
+            return data.json()
         });
     }
 
     onSearchClick() {
-        this.setState((prevstate, props) => {
-            let movieList = [];
-            if (prevstate.searchText !== '') {
-                movieList = this.moviesData.filter(item => {
-                    return item.title.toLowerCase().includes(prevstate.searchText.toLowerCase());
-                });
-            }
-            return { moviesData: movieList.length > 0 ? movieList : this.moviesData };
-        });
+        debugger;
+        let movieList = [];
+        if (this.props.searchBy && this.props.searchBy !== "") {
+            movieList = this.moviesData.filter(item => {
+                return item.title.toLowerCase().includes(this.props.searchBy);
+            });
+        }
+        const filteredData = this.props.searchBy != "" ? movieList : this.props.movies;
+        this.props.dispatch(searchMovies(filteredData));
+
     }
 
     onMovieClick = (movie) => {
@@ -52,13 +50,13 @@ export class Search extends React.Component {
     }
 
     onSortByGenres() {
-        const sortResult = SearchUtils.sortMovies("genres", this.state.moviesData);
-        this.setState({ moviesData: sortResult });
+        const sortResult = SearchUtils.sortMovies("genres", this.props.movies);
+        this.props.dispatch(searchMovies(sortResult));
     }
 
     onSortByTitles() {
-        const sortResult = SearchUtils.sortMovies("title", this.state.moviesData);
-        this.setState({ moviesData: sortResult });
+        const sortResult = SearchUtils.sortMovies("title", this.props.movies);
+        this.props.dispatch(searchMovies(sortResult));
     }
 
     onSearchTextChange(e) {
@@ -66,38 +64,36 @@ export class Search extends React.Component {
         if (e.target.value !== '') {
             searchMovie = e.target.value;
         }
-        this.setState({
-            searchText: searchMovie
-        })
+        this.props.dispatch(movieSearchText(searchMovie));
     }
 
     onSortByReleaseDate() {
-        const currentList = this.state.moviesData
+        const currentList = this.props.movies;
         let sortResult = currentList.sort((a, b) => {
             return new Date(b.release_date) - new Date(a.release_date);
         })
-        this.setState({ searchResults: sortResult })
+        this.props.dispatch(searchMovies(sortResult));
     }
 
     onSortByRating() {
-        const currentList = this.state.moviesData;
+        const currentList = this.props.movies;
         let sortResult = currentList.sort((a, b) => {
             return b.vote_count - a.vote_count
         })
-        this.setState({ searchResults: sortResult })
+        this.props.dispatch(searchMovies(sortResult));
     }
 
     render() {
         debugger;
         return (
-            <SearchComponent data={this.state.moviesData}
-                onSearchClick={() => this.onSearchClick()}
+            <SearchComponent data={this.props.displayData ? this.props.displayData : []}
+                onSearchClick={this.onSearchClick}
                 onSearchTextChange={(e) => this.onSearchTextChange(e)}
-                onSortByGenres={() => this.onSortByGenres()}
-                onSortByTitles={() => this.onSortByTitles()}
-                onSortByReleaseDate={() => this.onSortByReleaseDate()}
-                onSortByRating={() => this.onSortByRating()}
-                onMovieClick={(movie) => this.onMovieClick(movie)}
+                onSortByGenres={this.onSortByGenres}
+                onSortByTitles={this.onSortByTitles}
+                onSortByReleaseDate={this.onSortByReleaseDate}
+                onSortByRating={this.onSortByRating}
+                onMovieClick={this.onMovieClick}
                 history={this.props.history} />
         );
 
@@ -106,7 +102,9 @@ export class Search extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    movies: state.movies
+    movies: state.movies,
+    searchBy: state.searchBy,
+    displayData: state.displayData
 });
 
 //export default Search;

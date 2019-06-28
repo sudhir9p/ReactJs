@@ -1,0 +1,5 @@
+{
+    "configuration": {
+        "apiUrl": "http://reactjs-cdp.herokuapp.com/movies"
+    }
+}
