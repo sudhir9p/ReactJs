@@ -21,7 +21,7 @@ const rootReducer = (state = initialState, action) => {
         case ActionTypes.SEARCH_MOVIES:
             return {
                 ...state,
-                displayData: action.payload
+                displayData: [...action.payload]
             };
         case ActionTypes.MOVIE_SEARCH_TEXT:
             return {

@@ -39,7 +39,7 @@ export class Search extends React.Component {
                 return item.title.toLowerCase().includes(this.props.searchBy);
             });
         }
-        const filteredData = this.props.searchBy != "" ? movieList : this.props.movies;
+        const filteredData = this.props.searchBy != undefined && this.props.searchBy != "" ? movieList : this.props.movies;
         this.props.dispatch(searchMovies(filteredData));
 
     }
