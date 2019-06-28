@@ -1,12 +1,12 @@
 import React from 'react';
 import './details.css';
-import { movies } from '../../../data/movies.json';
+import { connect } from "react-redux";
 
 export class MoviesDetails extends React.Component {
     constructor(props) {
         super(props);
         const movieId = this.props.match.params.id;
-        this.movie = movies.filter(movie => movie.id == movieId)[0];
+        this.movie = this.props.movies.filter(movie => movie.id == movieId)[0];
     }
 
     render() {
@@ -34,4 +34,10 @@ export class MoviesDetails extends React.Component {
     }
 }
 
-export default MoviesDetails;
+const mapStateToProps = state => ({
+    movies: state.movies,
+    searchBy: state.searchBy,
+    displayData: state.displayData
+});
+
+export default connect(mapStateToProps)(MoviesDetails)
