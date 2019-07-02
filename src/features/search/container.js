@@ -8,12 +8,6 @@ import { configuration } from '../../../config/config.json'
 export class Search extends React.Component {
     constructor(props) {
         super(props);
-        this.onSearchClick = this.onSearchClick.bind(this);
-        this.onSortByGenres = this.onSortByGenres.bind(this);
-        this.onSortByTitles = this.onSortByTitles.bind(this);
-        this.onSortByReleaseDate = this.onSortByReleaseDate.bind(this);
-        this.onMovieClick = this.onMovieClick.bind(this);
-        this.onSortByRating = this.onSortByRating.bind(this);
     }
 
     componentDidMount() {
@@ -31,7 +25,7 @@ export class Search extends React.Component {
         });
     }
 
-    onSearchClick() {
+    onSearchClick = () => {
         debugger;
         let movieList = [];
         if (this.props.searchBy && this.props.searchBy !== "") {
@@ -50,12 +44,12 @@ export class Search extends React.Component {
         });
     }
 
-    onSortByGenres() {
+    onSortByGenres = () => {
         const sortResult = SearchUtils.sortMovies("genres", this.props.movies);
         this.props.dispatch(searchMovies(sortResult));
     }
 
-    onSortByTitles() {
+    onSortByTitles = () => {
         const sortResult = SearchUtils.sortMovies("title", this.props.movies);
         this.props.dispatch(searchMovies(sortResult));
     }
@@ -68,7 +62,7 @@ export class Search extends React.Component {
         this.props.dispatch(movieSearchText(searchMovie));
     }
 
-    onSortByReleaseDate() {
+    onSortByReleaseDate = () => {
         const currentList = this.props.movies;
         let sortResult = currentList.sort((a, b) => {
             return new Date(b.release_date) - new Date(a.release_date);
@@ -76,7 +70,7 @@ export class Search extends React.Component {
         this.props.dispatch(searchMovies(sortResult));
     }
 
-    onSortByRating() {
+    onSortByRating = () => {
         const currentList = this.props.movies;
         let sortResult = currentList.sort((a, b) => {
             return b.vote_count - a.vote_count
@@ -88,7 +82,7 @@ export class Search extends React.Component {
         return (
             <SearchComponent data={this.props.displayData ? this.props.displayData : []}
                 onSearchClick={this.onSearchClick}
-                onSearchTextChange={(e) => this.onSearchTextChange(e)}
+                onSearchTextChange={this.onSearchTextChange}
                 onSortByGenres={this.onSortByGenres}
                 onSortByTitles={this.onSortByTitles}
                 onSortByReleaseDate={this.onSortByReleaseDate}
