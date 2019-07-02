@@ -20,13 +20,11 @@ export class Search extends React.Component {
 
     getMovies() {
         return fetch(configuration.apiUrl).then(data => {
-            debugger;
             return data.json()
         });
     }
 
     onSearchClick = () => {
-        debugger;
         let movieList = [];
         if (this.props.searchBy && this.props.searchBy !== "") {
             movieList = this.props.movies.filter(item => {
