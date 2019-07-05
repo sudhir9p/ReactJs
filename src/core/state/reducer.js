@@ -1,27 +1,17 @@
 import * as ActionTypes from './actions';
 
 const initialState = {
-    movies: [],
-    sortBy: "Title",
+    sortBy: "vote_count",
     searchBy: ""
 };
 
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ActionTypes.FETCH_MOVIES:
-            return {
-                ...state,
-                movies: action.payload
-            };
+
         case ActionTypes.SORT_BY_TYPE:
             return {
                 ...state,
-                sortByFilter: action.payload
-            };
-        case ActionTypes.SEARCH_MOVIES:
-            return {
-                ...state,
-                displayData: [...action.payload]
+                sortBy: action.payload
             };
         case ActionTypes.MOVIE_SEARCH_TEXT:
             return {
