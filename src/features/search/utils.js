@@ -1,7 +1,7 @@
 export const stringFormat = (url,...args) => {
     
-    for () {
-      a = a.replace("{" + k + "}", args[0])
+    for (let i =0;i<args.length;i++) {
+      url = url.replace("{" + i + "}", args[i])
     }
-    return a
+    return url;
 }

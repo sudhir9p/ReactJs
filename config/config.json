@@ -1,5 +1,6 @@
 {
     "configuration": {
-        "apiUrl": "https://reactjs-cdp.herokuapp.com/movies?sortBy={0}&sortOrder={1}&search={2}"
+        "apiUrl": "https://reactjs-cdp.herokuapp.com/movies",
+        "apiSortUrl": "https://reactjs-cdp.herokuapp.com/movies?sortBy={0}&sortOrder={1}&search={2}"
     }
 }

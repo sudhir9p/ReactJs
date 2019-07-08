@@ -3,7 +3,8 @@ import SearchForm from './search-form/index';
 import { connect } from "react-redux";
 import { fetchMovies, searchMovies, movieSearchText } from '../../core/state/actions';
 import { configuration } from '../../../config/config.json'
-import SearchResult from './search-results'
+import SearchResult from './search-results';
+import { stringFormat } from './utils';
 
 export class Search extends React.Component {
     constructor(props) {
@@ -14,20 +15,30 @@ export class Search extends React.Component {
     }
 
     componentDidMount = () => {
-        this.getMovies().then(res => {
+        this.getMovies(configuration.apiUrl).then(res => {
             this.setState({ data: res.data });
 
-        })
+        });
     }
 
 
-    componentDidUpdate(prevProps, prevState, snapshot){
-        console.log('TYYYYYYYYYYYYYYYYYYYYYYYYYYYYY');
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log('AAAAAAAAAAAAAAAAABBBBBBBBbbb');
+        debugger;
+        const search = this.props.searchBy ? this.props.searchBy : "";
+        const sortBy = this.props.sortBy ? this.props.sortBy : "";
+        console.log(search)
+        this.getMovies(stringFormat(configuration.apiSortUrl, sortBy, "desc", search)).then(res => {
+            //  this.setState({ data: res.data });
+            debugger;
+            //this.setState({ data: res.data });  
+
+        });
     }
 
 
-    getMovies = () => {
-        return fetch(configuration.apiUrl).then(data => {
+    getMovies = (url) => {
+        return fetch(url).then(data => {
             return data.json()
         });
     }
