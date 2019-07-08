@@ -15,7 +15,6 @@ export class SearchForm extends React.Component {
     }
 
     onSortBy = (sortBy) => {
-        console.log('SBSBSV ' + sortBy);
         this.props.dispatch(sortMovies(sortBy));
     }
 
@@ -60,7 +59,6 @@ const mapStateToProps = state => ({
     sortBy: state.SortBy
 });
 
-//export default Search;
 
 
 export default connect(mapStateToProps)(SearchForm)

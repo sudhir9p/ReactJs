@@ -14,8 +14,6 @@ export class SearchResult extends React.Component {
     }
 
     render = () => {
-        console.log('BBBBBBBBBB');
-        console.log(this.props);
         return (
             <MoviesList movies={this.props.data ? this.props.data : []} history={this.props.history} onMovieClick={this.onMovieClick}></MoviesList>
         );
