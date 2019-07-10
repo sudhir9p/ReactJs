@@ -22,18 +22,13 @@ export class Search extends React.Component {
     }
 
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        console.log('AAAAAAAAAAAAAAAAABBBBBBBBbbb');
-        debugger;
-        const search = this.props.searchBy ? this.props.searchBy : "";
-        const sortBy = this.props.sortBy ? this.props.sortBy : "";
-        console.log(search)
-        this.getMovies(stringFormat(configuration.apiSortUrl, sortBy, "desc", search)).then(res => {
-            //  this.setState({ data: res.data });
-            debugger;
-            //this.setState({ data: res.data });  
-
-        });
+    async componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.searchBy != this.props.searchBy || prevProps.sortBy != this.props.searchBy) {
+            const search = this.props.searchBy ? this.props.searchBy : "";
+            const sortBy = this.props.sortBy ? this.props.sortBy : "";
+            const movies = await this.getMovies(stringFormat(configuration.apiSortUrl, sortBy, "desc", search));
+            this.setState({ data: movies.data });
+        }
     }
 
 
@@ -47,7 +42,7 @@ export class Search extends React.Component {
         return (
             <div className="searchForm">
                 <SearchForm></SearchForm>
-                <SearchResult data={this.state.data} history={this.props.history} onMovieClick={this.props.onMovieClick}></SearchResult>
+                <SearchResult data={this.state.data}  onMovieClick={this.props.onMovieClick}></SearchResult>
             </div>
         );
     }

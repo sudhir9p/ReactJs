@@ -1,6 +1,5 @@
 import React from 'react';
 import MoviesCard from '../movie-card';
-import { withRouter } from 'react-router';
 
 export const MoviesList = (props) => {
     return (
@@ -10,4 +9,4 @@ export const MoviesList = (props) => {
     )
 }
 
-export default withRouter(MoviesList);
+export default MoviesList;
