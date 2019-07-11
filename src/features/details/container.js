@@ -9,13 +9,13 @@ export class MoviesDetails extends React.Component {
         this.state = {
             movie: {}
         }
-        this.getMovies(configuration.apiUrl + '/' + this.props.match.params.id).then(res => {
+        this.getMoviesById(configuration.apiUrl + '/' + this.props.match.params.id).then(res => {
             this.setState({ movie: res });
 
         });
     }
 
-    getMovies = (url) => {
+    getMoviesById = (url) => {
         return fetch(url).then(data => {
             return data.json()
         });
