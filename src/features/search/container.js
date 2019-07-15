@@ -42,7 +42,7 @@ export class Search extends React.Component {
         return (
             <div className="searchForm">
                 <SearchForm></SearchForm>
-                <SearchResult data={this.state.data}  onMovieClick={this.props.onMovieClick}></SearchResult>
+                <SearchResult data={this.state.data} history={this.props.history}  onMovieClick={this.props.onMovieClick}></SearchResult>
             </div>
         );
     }
