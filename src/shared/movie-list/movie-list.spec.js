@@ -1,15 +1,15 @@
-import { MoviesCard } from './container';
+import { MoviesList } from './container';
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { configure, shallow } from 'enzyme';
 
-import Adapter from 'enzyme-adapter-react-16';
 
+import Adapter from 'enzyme-adapter-react-16';
 
 configure({ adapter: new Adapter() });
 
-describe(`Movie-Card Component`, () => {
-    const movie = {
+describe(`Movie-List Component`, () => {
+    const movies = [{
         "id": 337167,
         "title": "Fifty Shades Freed",
         "tagline": "Don't miss the climax",
@@ -26,16 +26,16 @@ describe(`Movie-Card Component`, () => {
         ],
         "runtime": 106,
         "year": 1992
-    };
+    }];
 
     it('should render as expected', () => {
-        const movieCardOj = renderer.create(<MoviesCard movie={movie} />).toJSON();
+        const movieCardOj = renderer.create(<MoviesList movies={movies} />).toJSON();
         expect(movieCardOj).toMatchSnapshot();
     });
 
 
     it("Should trigger search on click", () => {
-        const component = shallow(<MoviesCard movie={movie}/>);
+        const component = shallow(<MoviesList movies={movies}/>);
         expect(component).toBeTruthy();
 
     })

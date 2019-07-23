@@ -1,7 +1,13 @@
 import { Search, mapStateToProps } from './container';
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { exportAllDeclaration } from '@babel/types';
+
+import { configure, shallow } from 'enzyme';
+
+import Adapter from 'enzyme-adapter-react-16';
+import "isomorphic-fetch";
+
+configure({ adapter: new Adapter() });
 
 describe(`Search Component`, () => {
 
@@ -10,8 +16,9 @@ describe(`Search Component`, () => {
     })
 
     /*it('should render as expected', () => {
-       const searchOj = renderer.create(<Search />).toJSON();
-       expect(searchOj).toMatchSnapshot();
+       
+       const component = shallow(<Search />);
+        expect(component).toBeTruthy();
    });
 
   it('should map state to props correctly', () => {

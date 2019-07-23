@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Movie-List Component should render as expected 1`] = `
+<div
+  className="movie-list-container"
+>
+  <div>
+     
+    <div
+      className="movie-card"
+      onClick={[Function]}
+    >
+      <img
+        alt="Fifty Shades Freed"
+        src="https://image.tmdb.org/t/p/w500/3kcEGnYBHDeqmdYf8ZRbKdfmlUy.jpg"
+      />
+      <p
+        className="txtcolor"
+      >
+        Fifty Shades Freed
+      </p>
+      <p
+        className="bold"
+      >
+        Release Date: 
+        <span
+          className="normal"
+        >
+          2018-02-07
+        </span>
+      </p>
+      <p
+        className="bold"
+      >
+        Rating: 
+        <span
+          className="normal"
+        >
+          1195
+        </span>
+      </p>
+      <p
+        className="bold"
+      >
+        Genre: 
+        <span
+          className="normal"
+        >
+          Drama, Romance
+        </span>
+      </p>
+    </div>
+  </div>
+</div>
+`;
