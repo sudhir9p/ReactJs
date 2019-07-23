@@ -1,6 +1,11 @@
 import { SearchForm, mapStateToProps } from './container';
 import React from 'react';
 import renderer from 'react-test-renderer';
+import { configure, shallow } from 'enzyme';
+
+import Adapter from 'enzyme-adapter-react-16';
+
+configure({ adapter: new Adapter() });
 
 describe(`Search-form Component`, () => {
     it('should add', () => {
@@ -17,7 +22,14 @@ describe(`Search-form Component`, () => {
         const ownProps = {};
         const compState = mapStateToProps(appState, ownProps);
         console.log(compState);
-        expect(compState).toEqual( { searchBy: 'Genre', sortBy: 'Date' });
+        expect(compState).toEqual({ searchBy: 'Genre', sortBy: 'Date' });
+    });
+
+    it("Should trigger search on click", () => {
+         const component = shallow(<SearchForm />); 
+        // const onSearchCLickSpy = jest.spyOn(SearchForm.prototype,"onSearchClick")
+        expect(component).toBeTruthy();
+
     })
 
 })
