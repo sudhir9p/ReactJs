@@ -5,17 +5,17 @@ import renderer from 'react-test-renderer';
 describe(`Search Component`, () => {
     
 
-    /*it('should render as expected', () => {
+    it('should render as expected', () => {
         const searchOj = renderer.create(<Search />).toJSON();
         expect(searchOj).toMatchSnapshot();
-    });*/
+    });
 
-    /*it('should map state to props correctly', () => {
+    it('should map state to props correctly', () => {
         const appState = { searchBy: 'Genre', sortBy: 'Date' };
         const ownProps = {};
         const compState = mapStateToProps(appState, ownProps);
         console.log(compState);
         expect(compState).toEqual( { searchBy: 'Genre', sortBy: 'Date' });
-    })*/
+    })
 
 })

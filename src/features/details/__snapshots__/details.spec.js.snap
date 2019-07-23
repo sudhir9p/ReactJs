@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Movie Details Component should render as expected 1`] = `
+<div
+  className="movie-details"
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col-sm-3 details-image"
+    >
+      <img />
+    </div>
+    <div
+      className="col-sm-6 details-content"
+    >
+      <div
+        className="row"
+      >
+        <h2
+          className="details-title"
+        />
+         
+        <span
+          className="details-rating"
+        >
+          4.3
+        </span>
+      </div>
+      <div
+        className="row details-yearmin"
+      >
+        <p
+          className="details-year"
+        />
+         
+        <p
+          className="details-year-text"
+        >
+          year
+        </p>
+         
+        <p
+          className="details-mins"
+        />
+         
+        <p
+          className="details-mins-text"
+        >
+          mins
+        </p>
+      </div>
+      <div
+        className="row details-movie-desc"
+      >
+        <p />
+      </div>
+    </div>
+  </div>
+</div>
+`;

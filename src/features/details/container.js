@@ -1,5 +1,5 @@
 import React from 'react';
-import './details.css';
+// import './details.css';
 import { connect } from "react-redux";
 import { configuration } from '../../../config/config.json';
 
@@ -9,10 +9,12 @@ export class MoviesDetails extends React.Component {
         this.state = {
             movie: {}
         }
-        this.getMoviesById(configuration.apiUrl + '/' + this.props.match.params.id).then(res => {
-            this.setState({ movie: res });
+        if (this.props.match && this.props.match.params.id) {
+            this.getMoviesById(configuration.apiUrl + '/' + this.props.match.params.id).then(res => {
+                this.setState({ movie: res });
 
-        });
+            });
+        }
     }
 
     getMoviesById = (url) => {
@@ -26,17 +28,17 @@ export class MoviesDetails extends React.Component {
             <div className="movie-details">
                 <div className="row">
                     <div className="col-sm-3 details-image">
-                        <img src={this.state && this.state.movie? this.state.movie.poster_path : ''} />
+                        <img src={this.state && this.state.movie ? this.state.movie.poster_path : ''} />
                     </div>
                     <div className="col-sm-6 details-content">
                         <div className="row">
                             <h2 className="details-title" >{this.state && this.state.movie ? this.state.movie.title : ''}</h2> <span className="details-rating">4.3</span>
                         </div>
                         <div className="row details-yearmin">
-                            <p className="details-year">{this.state && this.state.movie ? this.state.movie.year: ''}</p> <p className="details-year-text">year</p> <p className="details-mins">{this.state && this.state.movie ? this.state.movie.runtime : ''}</p> <p className="details-mins-text">mins</p>
+                            <p className="details-year">{this.state && this.state.movie ? this.state.movie.year : ''}</p> <p className="details-year-text">year</p> <p className="details-mins">{this.state && this.state.movie ? this.state.movie.runtime : ''}</p> <p className="details-mins-text">mins</p>
                         </div>
                         <div className="row details-movie-desc">
-                            <p>{this.state && this.state.movie ?  this.state.movie.overview: ''}</p>
+                            <p>{this.state && this.state.movie ? this.state.movie.overview : ''}</p>
                         </div>
 
                     </div>
@@ -46,7 +48,7 @@ export class MoviesDetails extends React.Component {
     }
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
     sortBy: state.sortBy,
     searchBy: state.searchBy
 });
