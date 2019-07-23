@@ -31,7 +31,7 @@ export class SearchForm extends React.Component {
 
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
     searchBy: state.searchBy,
     sortBy: state.SortBy
 });

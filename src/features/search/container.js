@@ -52,7 +52,7 @@ export class Search extends React.Component {
 
 
 //export default Search;
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
     sortBy: state.sortBy,
     searchBy: state.searchBy
 });

@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search-form Component should render as expected 1`] = `
+<div>
+  <h1
+    className="title"
+  >
+    Find your movie
+  </h1>
+  <div
+    className="input-group mb-3"
+  >
+    <input
+      className="form-control serachText"
+      id="search"
+      onChange={[Function]}
+      placeholder="Search..."
+      type="text"
+    />
+  </div>
+  <br />
+  <div>
+    <div
+      className="input-group"
+    >
+      <button
+        className="btn btn-success-cus fc-button"
+      >
+        Search
+      </button>
+      <button
+        className="btn btn-success-cus fc-button"
+        onClick={[Function]}
+      >
+        Genres
+      </button>
+      <button
+        className="btn btn-success-cus fc-button"
+        onClick={[Function]}
+      >
+        Title
+      </button>
+    </div>
+  </div>
+  <div
+    className="sortByDiv"
+  >
+    <span
+      className="bold text-color"
+    >
+      Sort By:
+    </span>
+    <button
+      className="btn btn-success-cus fc-button"
+      onClick={[Function]}
+    >
+      Release Date
+    </button>
+    <button
+      className="btn btn-success-cus fc-button"
+      onClick={[Function]}
+    >
+      Rating
+    </button>
+  </div>
+</div>
+`;
