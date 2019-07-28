@@ -15,9 +15,10 @@ describe(`Search Component`, () => {
         expect(1 + 1).toBe(2);
     })
 
-    /*it('should render as expected', () => {
-       
-       const component = shallow(<Search />);
+    it('should render as expected', () => {
+        //jest.spyOn(global, 'fetch').mockImplementation(() => Promise.resolve({}))
+        global.fetch = jest.fn().mockImplementation(() => Promise.resolve({}));
+        const component = shallow(<Search />);
         expect(component).toBeTruthy();
    });
 
@@ -27,6 +28,6 @@ describe(`Search Component`, () => {
        const compState = mapStateToProps(appState, ownProps);
        console.log(compState);
        expect(compState).toEqual( { searchBy: 'Genre', sortBy: 'Date' });
-   })*/
+   })
 
 })

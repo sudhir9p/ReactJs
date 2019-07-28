@@ -3,10 +3,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 
 describe(`Movie Details Component`, () => {
-    it('should add', () => {
-        expect(2 + 2).toEqual(4);
-    });
-
+    
     it('should render as expected', () => {
         const searchOj = renderer.create(<MoviesDetails />).toJSON();
         expect(searchOj).toMatchSnapshot();

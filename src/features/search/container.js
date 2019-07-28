@@ -34,7 +34,7 @@ export class Search extends React.Component {
 
     getMovies = (url) => {
         return fetch(url).then(data => {
-            return data.json()
+            return data.json ? data.json() : []
         });
     }
 
